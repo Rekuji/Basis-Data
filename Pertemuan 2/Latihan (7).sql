@@ -1,5 +1,5 @@
 CREATE TABLE employees(
-	emp_id varchar(5), emp_name varchar(50), age int, gol int
+	emp_id varchar(5), emp_name varchar(50), age int, gol varchar(5)
 );
 SELECT emp_id, emp_name, age FROM pertemuan2.employees;
 
