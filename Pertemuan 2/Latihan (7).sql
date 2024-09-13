@@ -1,5 +1,5 @@
 CREATE TABLE employees(
-	emp_id varchar(5), emp_name varchar(50), age int
+	emp_id varchar(5), emp_name varchar(50), age int, gol int
 );
 SELECT emp_id, emp_name, age FROM pertemuan2.employees;
 
@@ -32,3 +32,10 @@ UPDATE employees SET gol = 'I';
 SELECT emp_id, emp_name, age, gol FROM pertemuan2.employees;
 
 #jika kita DELETE tanpa menggunakan WHERE maka semua data dalam kolum "gol" akan terhapus, makanya WHERE itu penting.
+
+UPDATE employees SET gol = 'II' WHERE age BETWEEN 23 AND 25;
+UPDATE employees SET gol = 'I' WHERE age NOT BETWEEN 23 AND 25;
+UPDATE employees SET gol = 'II' WHERE emp_name BETWEEN 'Budi' AND 'Intan';
+UPDATE employees SET gol = 'III' WHERE emp_id IN (155,124,134);
+UPDATE employees SET gol = 'I' WHERE emp_name LIKE '%Budi%';
+UPDATE employees SET gol = 'III' WHERE age AND emp_id LIKE '%2%';
