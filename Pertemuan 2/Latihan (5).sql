@@ -9,33 +9,23 @@ VALUES (123,'budi',21);
 ALTER TABLE employees add primary key (emp_id);
 
 INSERT INTO employees (emp_id, emp_name, age)
-VALUES (124,'Budi B',21); 
+VALUES (211,'Mulya',21); 
 INSERT INTO employees (emp_id, emp_name, age)
-VALUES (244,'Dani',23); 
+VALUES (212,'Dewi',22); 
 INSERT INTO employees (emp_id, emp_name, age)
-VALUES (134,'Budi A',24); 
-INSERT INTO employees (emp_id, emp_name, age)
-VALUES (144,'Intan',20); 
-INSERT INTO employees (emp_id, emp_name, age)
-VALUES (155,'Budi W',25); 
+VALUES (213,'Ayu',23); 
 
-ALTER TABLE employees ADD Gol varchar(5);
-UPDATE employees SET gol = 'I' WHERE emp_id = 124;
-UPDATE employees SET gol = 'II' WHERE emp_id = 244;
-UPDATE employees SET gol = 'III' WHERE emp_id = 134;
-UPDATE employees SET gol = 'II' WHERE emp_id = 144;
-UPDATE employees SET gol = 'I' WHERE emp_id = 155;
+ALTER TABLE employees ADD status varchar(1);
+#Kolum baru "status" dibuat untuk menandakan bahwa row tersebut dihapus atau tidak
 
-SELECT emp_id, emp_name, age, gol FROM pertemuan2.employees;
+UPDATE employees
+SET status = 1; 
+#semua data dalam kolum status diberi tanda 1 untuk menandakan bahwa data-data tersebut masih ada
 
-UPDATE employees SET gol = 'I';
-SELECT emp_id, emp_name, age, gol FROM pertemuan2.employees;
+SELECT emp_id, emp_name, age FROM pertemuan2.employees
+WHERE status is null;
+#Syntax ini seakan-akan memperlihatkan data yang sudah dihapus.
 
-#jika kita DELETE tanpa menggunakan WHERE maka semua data dalam kolum "gol" akan terhapus, makanya WHERE itu penting.
-
-UPDATE employees SET gol = 'II' WHERE age BETWEEN 23 AND 25;
-UPDATE employees SET gol = 'I' WHERE age NOT BETWEEN 23 AND 25;
-UPDATE employees SET gol = 'II' WHERE emp_name BETWEEN 'Budi' AND 'Intan';
-UPDATE employees SET gol = 'III' WHERE emp_id IN (155,124,134);
-UPDATE employees SET gol = 'I' WHERE emp_name LIKE '%Budi%';
-UPDATE employees SET gol = 'III' WHERE age AND emp_id LIKE '%2%';
+SELECT emp_id, emp_name, age FROM pertemuan2.employees
+WHERE status is not null;
+#Syntax ini digunakan untuk memperlihatkan restored data dari yang sudah diapus. 
